@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset de base */
+body {
+  @apply bg-gray-50;
+}
+
+/* Conteneur principal */
+.app-container {
+  @apply min-h-screen;
+}
+
+/* Contenu principal */
+.main-content {
+  @apply bg-white rounded-lg shadow-sm p-6;
+}
+
+/* Formulaires */
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+.form-input {
+  @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm;
+}
+
+/* Boutons */
+.btn-primary {
+  @apply px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700;
+}
+
+.btn-secondary {
+  @apply px-4 py-2 bg-white text-gray-700 border border-gray-300 rounded hover:bg-gray-50;
+}
+
+/* Tableaux */
+.table {
+  @apply min-w-full divide-y divide-gray-200;
+}
+
+.table th {
+  @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+
+.table td {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+}
+
+/* Cartes */
+.card {
+  @apply bg-white rounded-lg shadow-sm;
+}
+
+.card-header {
+  @apply px-6 py-4 border-b border-gray-200;
+}
+
+.card-body {
+  @apply p-6;
+}
