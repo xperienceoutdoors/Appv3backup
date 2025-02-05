@@ -1,0 +1,31 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: "Warm up"
+    - duration: 120
+      arrivalRate: 10
+      name: "Sustained load"
+    - duration: 60
+      arrivalRate: 20
+      name: "Peak load"
+
+scenarios:
+  - name: "Check availability and make reservation"
+    flow:
+      - get:
+          url: "/api/activities/{{activityId}}/availability"
+          qs:
+            date: "2025-02-03"
+            formulaId: "{{formulaId}}"
+            participants: "2"
+      - think: 2
+      - post:
+          url: "/api/reservations"
+          json:
+            activityId: "{{activityId}}"
+            formulaId: "{{formulaId}}"
+            date: "2025-02-03"
+            startTime: "10:00"
+            participants: 2

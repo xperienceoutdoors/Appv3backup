@@ -1,0 +1,112 @@
+import React from 'react';
+import PageLayout from '../../components/layout/PageLayout';
+import ConfigurationTabs from './ConfigurationTabs';
+
+const Activities: React.FC = () => {
+  return (
+    <PageLayout title="Gestion des activités">
+      <ConfigurationTabs />
+    </PageLayout>
+  );
+};
+
+export default Activities;
+              Aucune activité configurée
+            </h3>
+            <p className="mt-2 text-sm text-[var(--primary-color)] text-opacity-50">
+              Commencez par créer une nouvelle activité
+            </p>
+          </div>
+        ) : (
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {activities.map((activity) => (
+              <div
+                key={activity.id}
+                className="card hover:shadow-lg transition-shadow duration-200"
+              >
+                {/* Image de l'activité */}
+                {activity.imageUrl && (
+                  <div className="relative h-48 mb-4 rounded-t-lg overflow-hidden">
+                    <img
+                      src={activity.imageUrl}
+                      alt={activity.name}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                )}
+
+                {/* Contenu */}
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 className="text-lg font-semibold text-[var(--primary-color)]">
+                        {activity.name}
+                      </h3>
+                      <p className="text-[var(--primary-color)] text-opacity-70">
+                        {activity.shortDescription}
+                      </p>
+                    </div>
+                    {activity.isActive ? (
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                        Actif
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                        Inactif
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Détails */}
+                  <div className="space-y-2 mb-4 text-sm text-[var(--primary-color)] text-opacity-70">
+                    <div className="flex justify-between">
+                      <span>Durée :</span>
+                      <span>{activity.duration.duration} min</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Prix :</span>
+                      <span>{activity.pricing.basePrice} €</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Participants max :</span>
+                      <span>{activity.maxParticipants}</span>
+                    </div>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex gap-2 mt-4 pt-4 border-t border-[var(--primary-color)] border-opacity-10">
+                    <button
+                      className="button-secondary flex-1"
+                      onClick={() => setEditingActivity(activity)}
+                    >
+                      Modifier
+                    </button>
+                    <button
+                      className="button-danger flex-1"
+                      onClick={() => handleDeleteActivity(activity.id)}
+                    >
+                      Supprimer
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Modal d'activité */}
+      <ActivityModal
+        isOpen={isAddingActivity || !!editingActivity}
+        onClose={() => {
+          setIsAddingActivity(false);
+          setEditingActivity(null);
+        }}
+        onSave={handleSaveActivity}
+        activity={editingActivity}
+      />
+    </PageLayout>
+  );
+};
+
+export default Activities;

@@ -1,0 +1,53 @@
+{
+  "id": "test-period-1",
+  "name": "Période Printemps 2025",
+  "description": "Période de test pour le printemps 2025",
+  "startDate": "2025-02-01",
+  "endDate": "2025-05-31",
+  "schedules": {
+    "monday": {
+      "dayOfWeek": 1,
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "isActive": true
+    },
+    "tuesday": {
+      "dayOfWeek": 2,
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "isActive": true
+    },
+    "wednesday": {
+      "dayOfWeek": 3,
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "isActive": true
+    },
+    "thursday": {
+      "dayOfWeek": 4,
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "isActive": true
+    },
+    "friday": {
+      "dayOfWeek": 5,
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "isActive": true
+    },
+    "saturday": {
+      "dayOfWeek": 6,
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "isActive": true
+    },
+    "sunday": {
+      "dayOfWeek": 7,
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "isActive": false
+    }
+  },
+  "activities": ["test-activity-1"],
+  "isActive": true
+}
